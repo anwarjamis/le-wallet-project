@@ -1,3 +1,6 @@
+require "open-uri"
+require 'json'
+
 class BankAccountsController < ApplicationController
   before_action :set_bank, only: %i[show edit update destroy]
 
@@ -10,10 +13,17 @@ class BankAccountsController < ApplicationController
   end
 
   def create
-    @bank = BankAccount.new
-    # Usar la API
+    @bank = BankAccount.new(bank_params)
+    @bank.user_id = current_user.id
+    url = "https://api.fintoc.com/v1/accounts/?link_token=#{@bank.link}"
+    user_serialized = URI.open(url, "Authorization" => @bank.sk).read
+    user = JSON.parse(user_serialized)
+    @bank.account_number = user.first['number']
+    @bank.account_type = user.first['official_name']
     if @bank.save
-      redirect_to bank_accounts_path
+      redirect_to root_path
+    else
+      render 'new'
     end
   end
 
@@ -39,7 +49,7 @@ class BankAccountsController < ApplicationController
   private
 
   def bank_params
-    params.require(:ban).permit(:name)
+    params.require(:bank_account).permit(:name, :sk, :pk, :link, :bank)
   end
 
   def set_bank

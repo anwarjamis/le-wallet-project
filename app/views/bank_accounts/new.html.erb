@@ -1,7 +1,9 @@
-<a href="https://dashboard.fintoc.com/signup">Crear link y llaves en Fintoc</a>
+<a href="https://dashboard.fintoc.com/signup" target="_blank">Crear link y llaves en Fintoc</a>
+<% banks = ['Banco de Chile', 'Santander', 'Itaú', 'BICE', 'Scotiabank', 'BCI', 'Banco Estado', 'Security'] %>
 
 <%= simple_form_for(@bank) do |f| %>
   <%= f.input :name %>
+  <%= f.input :bank, collection: banks %>
   <%= f.input :link %>
   <%= f.input :pk %>
   <%= f.input :sk %>
