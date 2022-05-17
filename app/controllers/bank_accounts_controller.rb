@@ -1,11 +1,17 @@
-require "open-uri"
+require 'open-uri'
 require 'json'
 
 class BankAccountsController < ApplicationController
   before_action :set_bank, only: %i[show edit update destroy]
 
   def index
-    @bank_accounts = BankAccount.all
+    @banks = BankAccount.where(user_id: current_user.id)
+    @balance = @banks.map do |bank|
+      url = "https://api.fintoc.com/v1/accounts/#{bank.fintoc_id}?link_token=#{bank.link}"
+      user_serialized = URI.open(url, "Authorization" => bank.sk).read
+      user = JSON.parse(user_serialized)
+      user['balance']['available']
+    end
   end
 
   def new
@@ -20,6 +26,7 @@ class BankAccountsController < ApplicationController
     user = JSON.parse(user_serialized)
     @bank.account_number = user.first['number']
     @bank.account_type = user.first['official_name']
+    @bank.fintoc_id = user.first['id']
     if @bank.save
       redirect_to root_path
     else
