@@ -3,7 +3,7 @@
   <% if user_signed_in? %>
     <h1><%= "Hola #{current_user.name}!"%></h1>
     <p>Find me in app/views/pages/home.html.erb</p>
-    <%= link_to "Agrega tu banco", "#", class: "btn btn-flat" %>
+    <%= link_to "Agrega tu banco", new_bank_account_path, class: "btn btn-flat" %>
     <% end %>
 </div>
 <br>
