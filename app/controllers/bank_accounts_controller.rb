@@ -5,6 +5,10 @@ class BankAccountsController < ApplicationController
     @bank_accounts = BankAccount.all
   end
 
+  def new
+    @bank = BankAccount.new
+  end
+
   def create
     @bank = BankAccount.new
     # Usar la API
