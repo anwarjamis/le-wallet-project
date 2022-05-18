@@ -1,4 +1,27 @@
+
+
+<div class='container'>
 <h1>Movimientos</h1>
-<% @movements.each do |movement| %>
-  <ul><%= movement.date %></ul>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Monto</th>
+      <th scope="col">Descripcion</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <%@movements.each_with_index do |movement, i|%>
+    <tr>
+      <th scope="row"><%= i+1 %></th>
+      <td><%= movement['post_date'].to_date%></td>
+      <td><%= movement['amount']%></td>
+      <td><%= movement['description']%></td>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
+</div>
