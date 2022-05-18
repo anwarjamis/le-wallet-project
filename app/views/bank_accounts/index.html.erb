@@ -11,7 +11,7 @@
   <div class="cards">
   <% @banks.each_with_index do |bank, index| %>
     <div class="card-balance" style="background-color: #0D6EFD">
-      <h3><%= bank.bank %></h3>
+      <h3><%= link_to bank.bank, bank_account_movements_path(bank), class: "text-white"%></h3>
       <h6><%= "#{bank.account_type} #{bank.account_number}" %></h6>
       <h4><%= bank.name %></h5>
       <h2><%= number_to_currency(@balance[index], :precision => 0, :delimiter => '.') %></h2>

@@ -8,11 +8,13 @@
       <th scope="col">#</th>
       <th scope="col">Fecha</th>
       <th scope="col">Monto</th>
-      <th scope="col">Descripcion</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Banco</th>
     </tr>
   </thead>
   <tbody>
 
+<% k = -1 %>
 <% for j in 0...@movements.size do %>
   <%@movements[j].each_with_index do |movement, i|%>
     <tr>
@@ -20,6 +22,10 @@
       <td><%= movement['post_date'].to_date%></td>
       <td><%= number_to_currency(movement['amount'], :precision => 0, :delimiter =>'.')%></td>
       <td><%= movement['description']%></td>
+      <% if i == 0 %>
+        <% k += 1 %>
+      <% end %>
+      <td><%= @banks[k].bank %></td>
     </tr>
   <% end %>
 <% end %>
