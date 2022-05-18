@@ -1,11 +1,23 @@
-<a href="https://dashboard.fintoc.com/signup" target="_blank">Crear link y llaves en Fintoc</a>
-<% banks = ['Banco de Chile', 'Santander', 'Itaú', 'BICE', 'Scotiabank', 'BCI', 'Banco Estado', 'Security'] %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
 
-<%= simple_form_for(@bank) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :bank, collection: banks %>
-  <%= f.input :link %>
-  <%= f.input :pk %>
-  <%= f.input :sk %>
-  <%= f.submit %>
-<% end %>
+      <div class="form-devise">
+        <br>
+        <a href="https://dashboard.fintoc.com/signup" target="_blank">Crear link y llaves en Fintoc</a>
+        <% banks = ['Banco de Chile', 'Santander', 'Itaú', 'BICE', 'Scotiabank', 'BCI', 'Banco Estado', 'Security'] %>
+        <%= simple_form_for(@bank) do |f| %>
+          <br>
+          <%= f.input :name, :label => 'Nombre de tu cuenta' %>
+          <%= f.input :bank, collection: banks %>
+          <%= f.input :link %>
+          <%= f.input :pk %>
+          <%= f.input :sk %>
+          <%= f.button :submit, "Crear cuenta", class: 'btn-submit'%>
+        <% end %>
+      </div>
+
+
+    </div>
+  </div>
+</div>
