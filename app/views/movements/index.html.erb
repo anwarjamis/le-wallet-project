@@ -13,14 +13,16 @@
   </thead>
   <tbody>
 
-  <%@movements.each_with_index do |movement, i|%>
+<% for j in 0...@movements.size do %>
+  <%@movements[j].each_with_index do |movement, i|%>
     <tr>
       <th scope="row"><%= i+1 %></th>
       <td><%= movement['post_date'].to_date%></td>
-      <td><%= movement['amount']%></td>
+      <td><%= number_to_currency(movement['amount'], :precision => 0, :delimiter =>'.')%></td>
       <td><%= movement['description']%></td>
     </tr>
   <% end %>
+<% end %>
 
   </tbody>
 </table>
