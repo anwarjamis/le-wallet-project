@@ -4,7 +4,7 @@
   <div>
     <h3><%="Hola #{current_user.name}!"%></h3>
     <br>
-    <h1><strong>$<%= total %></strong></h1>
+    <h1><strong><%= number_to_currency(total, :precision => 0, :delimiter => '.') %></strong></h1>
     <h6 class="text-gray">TOTAL</h6>
     <br>
   </div>
@@ -14,7 +14,7 @@
       <h3><%= bank.bank %></h3>
       <h6><%= "#{bank.account_type} #{bank.account_number}" %></h6>
       <h4><%= bank.name %></h5>
-      <h2>$<%= @balance[index] %></h2>
+      <h2><%= number_to_currency(@balance[index], :precision => 0, :delimiter => '.') %></h2>
       <br>
     </div>
   <% end %>
