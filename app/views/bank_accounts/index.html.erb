@@ -1,16 +1,26 @@
 <br>
+<% total = @balance.sum %>
 <div class="container">
   <div>
-    <h1><%= "Hola #{current_user.name}!"%></h1>
-  </div>
-  <div>
-  <% @banks.each_with_index do |bank, index| %>
-    <h3>Cuenta: <%= bank.name %></h3>
-    <h5><%= bank.account_type %>, número <%= bank.account_number %>, <%= bank.bank %></h5>
-    <h2>Balance: <%= @balance[index] %></h2>
+    <h3><%="Hola #{current_user.name}!"%></h3>
     <br>
-  <% end %>
+    <h1><strong>$<%= total %></strong></h1>
+    <h6 class="text-gray">TOTAL</h6>
+    <br>
   </div>
-<%= link_to "Agrega tu banco", new_bank_account_path, class: "btn btn-flat" %>
+  <div class="cards">
+  <% @banks.each_with_index do |bank, index| %>
+    <div class="card-balance" style="background-color: #0D6EFD">
+      <h3><%= bank.bank %></h3>
+      <h6><%= "#{bank.account_type} #{bank.account_number}" %></h6>
+      <h4><%= bank.name %></h5>
+      <h2>$<%= @balance[index] %></h2>
+      <br>
+    </div>
+  <% end %>
+  <div class="card-balance" style="justify-content: center; background-color: #0D6EFD">
+      <%= link_to "+ Agrega un nuevo banco", new_bank_account_path, class: "text-white" %>
+    </div>
+  </div>
 <br>
 </div>
