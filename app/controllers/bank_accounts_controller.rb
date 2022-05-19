@@ -41,8 +41,7 @@ class BankAccountsController < ApplicationController
   end
 
   def update
-    @bank = BankAccount.new(bank_params)
-    if @bank.update
+    if @bank.update(bank_params)
       redirect_to bank_accounts_path
     else
       render 'edit'
