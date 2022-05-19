@@ -1,7 +1,17 @@
 <div class='container'>
 <h1>Movimientos <%= @bank.bank %></h1>
+<br>
 
-<%= button_to 'Guardar movimientos', bank_account_saving_path, method: :get, :remote=>true %>
+<%= form_tag bank_account_movements_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Encuentra un movimiento"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<br>
 
 <table class="table table-striped">
   <thead>

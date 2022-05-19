@@ -19,7 +19,7 @@
   <%@movements[j].each_with_index do |movement, i|%>
     <tr>
       <th scope="row"><%= i+1 %></th>
-      <td><%= movement['post_date'].to_date%></td>
+      <td><%= movement['post_date']%></td>
       <td><%= number_to_currency(movement['amount'], :precision => 0, :delimiter =>'.')%></td>
       <td><%= movement['description']%></td>
       <% if i == 0 %>
