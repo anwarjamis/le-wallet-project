@@ -6,11 +6,12 @@ class MovementsController < ApplicationController
 
   def index
     @banks = BankAccount.where(user_id: current_user.id)
-    @movements = @banks.map do |bank|
-    url = "https://api.fintoc.com/v1/accounts/#{bank.fintoc_id}/movements?link_token=#{bank.link}"
-    user_serialized = URI.open(url, "Authorization" => bank.sk).read
-    JSON.parse(user_serialized)
+    @banks.map do |bank|
+      url = "https://api.fintoc.com/v1/accounts/#{bank.fintoc_id}/movements?link_token=#{bank.link}"
+      user_serialized = URI.open(url, "Authorization" => bank.sk).read
+      JSON.parse(user_serialized)
     end
+    @movements = Movement.all.order(post_date: :desc)
   end
 
   def bank_movements
