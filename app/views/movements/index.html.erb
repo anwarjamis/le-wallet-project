@@ -26,4 +26,8 @@
   <% end %>
   </tbody>
 </table>
+<br><br>
+<% if @movements.size.zero? %>
+  <h5 class='text-center'>Debes cargar los movimientos de cada banco haciendo click sobre el nombre del banco en la página de balances.</h5>
+<% end %>
 </div>
