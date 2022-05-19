@@ -1,10 +1,17 @@
 <div class="container">
-  <br>
-  <h1>Categorías</h1>
-  <br>
-  <% @categories.each do |category| %>
-    <ul><h3><%= category.name %></h3></ul>
-    <ul><%= link_to "Editar categoría", edit_category_path(category), class: "nav-link" %></ul>
-  <% end %>
-  <%= link_to "Crear nueva categoría", new_category_path, class: "nav-link" %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="form-devise">
+        <br>
+        <h2>Categorías</h2>
+        <br>
+        <% @categories.each do |category| %>
+          <ul><h4><%= category.name %></h4></ul>
+          <ul><%= link_to "Editar categoría", edit_category_path(category), class: "nav-link btn-ctgy btn-edit" %></ul>
+        <% end %>
+        <br>
+        <%= link_to "Crear nueva categoría", new_category_path, class: "nav-link btn-ctgy" %>
+      </div>
+    </div>
+  </div>
 </div>
