@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_17_203156) do
+ActiveRecord::Schema.define(version: 2022_05_19_190835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_203156) do
     t.string "fintoc_id"
     t.integer "amount"
     t.string "description"
-    t.date "date"
+    t.date "post_date"
     t.string "comment"
     t.string "currency"
     t.bigint "bank_account_id", null: false
