@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update]
   resources :bank_accounts do
     get "movements", to: "movements#bank_movements"
-    get "saving", to: "movements#saving"
   end
   resources :categories, except: %i[show]
   resources :movements, only: %i[index]
