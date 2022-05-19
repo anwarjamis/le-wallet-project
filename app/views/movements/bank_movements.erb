@@ -1,5 +1,8 @@
 <div class='container'>
-<h1>Movimientos</h1>
+<h1>Movimientos de <%= @bank.bank %></h1>
+
+<%= button_to 'Guardar movimientos', bank_account_saving_path, method: :get, :remote=>true %>
+
 <table class="table table-striped">
   <thead>
     <tr>
