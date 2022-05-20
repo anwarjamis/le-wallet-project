@@ -12,6 +12,12 @@
       margin-top: 20px;
       text-align: center;
     }
+    h1 {
+      text-align: center;
+    }
+    h4 {
+      text-align: left;
+    }
     p {
       text-align: justify;
     }
@@ -29,4 +35,23 @@
   margin-bottom: 20px;
   text-align: center;
   background-color: #FBFBFE;
+}
+
+.btn-ctgy {
+  padding: 4px;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: #FBFBFE;
+}
+
+.btn-edit {
+  width: 100%;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  margin-left: -16px;
+  background-color: #FBFBFE;
+  text-decoration: none;
 }

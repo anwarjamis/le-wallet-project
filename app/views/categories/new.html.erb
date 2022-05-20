@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <div class="form-devise">
-        <h2>Agrega una categoría</h2>
+        <h2>Nueva categoría</h2>
         <%= simple_form_for @category do |f| %>
-          <%= f.input :name, :label => 'Nombre de la categoría' %>
-          <%= f.button :submit, 'Agregar categoría', class: 'btn-submit' %>
+          <%= f.input :name, :label => 'Nombre' %>
+          <%= f.button :submit, "Crear categoría", class: 'btn-submit' %>
         <% end %>
       </div>
     </div>
