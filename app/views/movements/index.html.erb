@@ -13,17 +13,21 @@
       <th scope="col">Categoría</th>
     </tr>
   </thead>
-  <tbody>
-  <% @movements.each_with_index do |movement, i| %>
-  <tr>
-    <th scope="row"><%= i+1 %></th>
-    <td><%= BankAccount.where(id: movement.bank_account_id).first.bank %></td>
-    <td><%= movement['post_date'] %></td>
-    <td><%= number_to_currency(movement['amount'], :precision => 0, :delimiter =>'.') %></td>
-    <td><%= movement['description'] %></td>
-    <td><%= Category.where(id: movement.category_id).first.name %></td>
-  </tr>
-  <% end %>
+  <tbody data-controller="edit-category">
+    <% @movements.each_with_index do |movement, i| %>
+    <tr>
+      <% categories = Category.all %>
+      <th scope="row"><%= i+1 %></th>
+      <td><%= BankAccount.where(id: movement.bank_account_id).first.bank %></td>
+      <td><%= movement['post_date'] %></td>
+      <td><%= number_to_currency(movement['amount'], :precision => 0, :delimiter =>'.') %></td>
+      <td><%= movement['description'] %></td>
+      <% category = Category.where(id: movement.category_id).first.name %>
+      <td><%= simple_form_for category, html: { data: { edit_category_target: "form", action: "change->edit-category#update" } } do |f| %>
+          <%= f.input :name, collection: categories, label: false, prompt: category %>
+      <% end %></td>
+    </tr>
+    <% end %>
   </tbody>
 </table>
 <br><br>

@@ -3,7 +3,6 @@ require "open-uri"
 require "date"
 
 class MovementsController < ApplicationController
-
   def index
     @banks = BankAccount.where(user_id: current_user.id)
     @banks.map do |bank|
@@ -29,4 +28,19 @@ class MovementsController < ApplicationController
     end
   end
 
+  def update
+    @movement = Movie.find()
+    @movement.update(movement_params)
+
+    respond_to do |format|
+      format.html { redirect_to movies_path }
+      format.text { render partial: "movements/movement_info", locals: { movement: @movement }, formats: [:html] }
+    end
+  end
+
+  private
+
+  def movement_params
+    params.require(:movement).permit(:name)
+  end
 end
