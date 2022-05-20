@@ -6,15 +6,7 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">
-        <% bank_array = @banks.map do |bank| %>
-          <% bank.bank %>
-        <% end %>
-        <%= form_with do |f| %>
-          <%= f.select :from, bank_array, :prompt => 'Banco' %>
-          <%= f.submit %>
-        <% end %>
-        </th>
+      <th scope="col">Banco</th>
       <th scope="col">Fecha</th>
       <th scope="col">Monto</th>
       <th scope="col">Descripción</th>
@@ -34,3 +26,4 @@
   <% end %>
   </tbody>
 </table>
+</div>
