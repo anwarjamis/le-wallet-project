@@ -12,6 +12,10 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
+      @userCategory = UserCategory.new
+      @userCategory.user = current_user
+      @userCategory.category = @category
+      @userCategory.save
       redirect_to categories_path
     else
       render 'new'
