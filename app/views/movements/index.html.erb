@@ -20,7 +20,7 @@
     <tr>
       <th scope="col">
       <% quantity= [10, 20, 30] %>
-      <%= form_with(url: movements_path, method: :get, local: true) do |f| %>
+      <%= form_with(url: movements_path, method: :get, local: true, remote: true) do |f| %>
         <%= f.select(:quantity, quantity.push('Todos'), {prompt: '#'}, onchange: 'this.form.submit()')%>
       <% end %>
       </th>

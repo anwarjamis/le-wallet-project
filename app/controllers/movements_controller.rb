@@ -6,16 +6,6 @@ class MovementsController < ApplicationController
 
   def index
     @banks = BankAccount.where(user_id: current_user.id)
-    @banks.map do |bank|
-      url = "https://api.fintoc.com/v1/accounts/#{bank.fintoc_id}/movements?link_token=#{bank.link}"
-      user_serialized = URI.open(url, "Authorization" => bank.sk).read
-      movements = JSON.parse(user_serialized)
-      movements.each do |movement|
-        movement = Movement.new(user_id: current_user.id, category_id: 1, bank_account_id: bank.id, fintoc_id: movement['id'], amount: movement['amount'],
-                                 description: movement['description'], currency: movement['currency'], post_date: movement['post_date'])
-        movement.save
-      end
-    end
     @movements = Movement.where(user_id: current_user.id).order(post_date: :desc)
     @categories = Category.all
     if params[:bank].present? && params[:bank] != 'Todos'
@@ -45,14 +35,7 @@ class MovementsController < ApplicationController
 
   def bank_movements
     @bank = BankAccount.find(params[:bank_account_id])
-    url = "https://api.fintoc.com/v1/accounts/#{@bank.fintoc_id}/movements?link_token=#{@bank.link}"
-    user_serialized = URI.open(url, "Authorization" => @bank.sk).read
-    @movements = JSON.parse(user_serialized)
-    @movements.each do |movement|
-      @movement = Movement.new(user_id: current_user.id, category_id: 1, bank_account_id: @bank.id, fintoc_id: movement['id'], amount: movement['amount'],
-                               description: movement['description'], currency: movement['currency'], post_date: movement['post_date'])
-      @movement.save
-    end
+    @movements = Movement.where(bank_account_id: @bank.id, user_id: current_user.id)
     if params[:query].present?
       @movements = Movement.where(user_id: current_user.id).search_by_description(params[:query])
     end
