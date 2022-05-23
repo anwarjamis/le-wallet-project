@@ -12,4 +12,5 @@ class User < ApplicationRecord
 
   validates :name, :rut, presence: true
   validates :rut, uniqueness: true
+  has_one_attached :photo
 end
