@@ -6,6 +6,7 @@ class BankAccountsController < ApplicationController
 
   def index
     @banks = BankAccount.where(user_id: current_user.id)
+    @movements = Movement.all.limit(10).order(post_date: :desc)
     @balance = @banks.map do |bank|
       url = "https://api.fintoc.com/v1/accounts/#{bank.fintoc_id}?link_token=#{bank.link}"
       user_serialized = URI.open(url, "Authorization" => bank.sk).read
