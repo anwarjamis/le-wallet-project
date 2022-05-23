@@ -2,6 +2,7 @@
   "name": "le-wallet-project",
   "private": true,
   "dependencies": {
+    "@fintoc/fintoc-js": "^1.1.2",
     "@popperjs/core": "^2.11.5",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",

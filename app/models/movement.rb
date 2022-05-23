@@ -1,5 +1,6 @@
 class Movement < ApplicationRecord
   belongs_to :bank_account
+  belongs_to :user
   # belongs_to :category
 
   include PgSearch::Model
