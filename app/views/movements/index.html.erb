@@ -22,9 +22,9 @@
       <td><%= movement['post_date'] %></td>
       <td><%= number_to_currency(movement['amount'], :precision => 0, :delimiter =>'.') %></td>
       <td><%= movement['description'] %></td>
-      <% category = Category.where(id: movement.category_id).first.name %>
-      <td><%= simple_form_for category, html: { data: { edit_category_target: "form", action: "change->edit-category#update" } } do |f| %>
-          <%= f.input :name, collection: categories, label: false, prompt: category %>
+      <%# category = Category.where(id: movement.category_id).first.name %>
+      <td><%= simple_form_for movement, html: { data: { edit_category_target: "form", action: "change->edit-category#update" } } do |f| %>
+          <%= f.input :category_id, collection: categories, label: false, selected: movement.category_id %>
       <% end %></td>
     </tr>
     <% end %>

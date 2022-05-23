@@ -29,18 +29,14 @@ class MovementsController < ApplicationController
   end
 
   def update
-    @movement = Movie.find()
-    @movement.update(movement_params)
-
-    respond_to do |format|
-      format.html { redirect_to movies_path }
-      format.text { render partial: "movements/movement_info", locals: { movement: @movement }, formats: [:html] }
-    end
+    @movement = Movement.find(params[:id])
+    @movement.category_id = params['movement']['category_id']
+    @movement.save
   end
 
   private
 
   def movement_params
-    params.require(:movement).permit(:name)
+    params.require(:movement).permit(:id, :category_id)
   end
 end

@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["categories", "form"];
 
   update(event) {
-    // event.preventDefault()
+    event.preventDefault()
     const url = this.formTarget.action
     fetch(url, {
       method: "PATCH",
@@ -12,8 +12,5 @@ export default class extends Controller {
       body: new FormData(this.formTarget)
     })
       .then(response => response.text())
-      .then((data) => {
-        console.log(data)
-      })
   }
 }

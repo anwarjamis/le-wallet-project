@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     get "movements", to: "movements#bank_movements"
   end
   resources :categories, except: %i[show]
-  resources :movements, only: %i[index]
+  resources :movements, only: %i[index update]
 end
