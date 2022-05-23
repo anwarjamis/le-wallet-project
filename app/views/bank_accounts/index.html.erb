@@ -22,5 +22,34 @@
       <%= link_to "+ Agrega un nuevo banco", new_bank_account_path, class: "text-white" %>
     </div>
   </div>
+<br><br>
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Últimos movimientos</h1>
+  <%= link_to 'Ver todos los movimientos', movements_path %>
+</div>
 <br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Banco</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Monto</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Categoría</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @movements.each_with_index do |movement, i| %>
+  <tr>
+    <th scope="row"><%= i+1 %></th>
+    <td><%= BankAccount.where(id: movement.bank_account_id).first.bank %></td>
+    <td><%= movement['post_date'] %></td>
+    <td><%= number_to_currency(movement['amount'], :precision => 0, :delimiter =>'.') %></td>
+    <td><%= movement['description'] %></td>
+    <td><%= Category.where(id: movement.category_id).first.name %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
 </div>
