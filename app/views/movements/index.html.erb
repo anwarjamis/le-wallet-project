@@ -24,6 +24,7 @@
         <%= f.select(:quantity, quantity.push('Todos'), {prompt: '#'}, onchange: 'this.form.submit()')%>
       <% end %>
       </th>
+      <br>
       <th scope="col">
         <% bank_array = @banks.map do |bank| %>
           <% bank.bank %>
@@ -35,7 +36,7 @@
       <th scope="col">Fecha</th>
       <th scope="col">Monto</th>
       <th scope="col">Descripción</th>
-      <th scope="col">Categoría
+      <th scope="col">
         <% category_array = @categories.map do |category| %>
           <% category.name %>
         <% end %>
