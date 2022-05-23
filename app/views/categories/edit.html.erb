@@ -6,6 +6,7 @@
         <%= simple_form_for @category do |f| %>
           <%= f.input :name, :label => 'Nombre de la categoría' %>
           <%= f.button :submit, 'Actualizar categoría', class: 'btn-submit' %>
+          <%= link_to "Volver", :back, class: "btn btn-gradient" %>
         <% end %>
       </div>
     </div>
