@@ -57,5 +57,4 @@ class MovementsController < ApplicationController
       @movements = Movement.search_by_description(params[:query])
     end
   end
-
 end
