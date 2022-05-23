@@ -2,15 +2,44 @@
 <div class='container'>
 <h1>Movimientos</h1>
 <br>
+
+<%= form_tag movements_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Encuentra un movimiento"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Banco</th>
+      <th scope="col">
+      <% quantity= [10, 20, 30] %>
+      <%= form_with(url: movements_path, method: :get, local: true) do |f| %>
+        <%= f.select(:quantity, quantity.push('Todos'), {prompt: '#'}, onchange: 'this.form.submit()')%>
+      <% end %>
+      </th>
+      <th scope="col">
+        <% bank_array = @banks.map do |bank| %>
+          <% bank.bank %>
+        <% end %>
+        <%= form_with(url: movements_path, method: :get, local: true) do |f| %>
+          <%= f.select(:bank, bank_array.push('Todos'), {prompt: 'Filtrar banco'}, onchange: 'this.form.submit()')%>
+        <% end %>
+        </th>
       <th scope="col">Fecha</th>
       <th scope="col">Monto</th>
       <th scope="col">Descripción</th>
-      <th scope="col">Categoría</th>
+      <th scope="col">Categoría
+        <% category_array = @categories.map do |category| %>
+          <% category.name %>
+        <% end %>
+        <%= form_with(url: movements_path, method: :get, local: true) do |f| %>
+          <%= f.select(:category, category_array.push('Todas'), {prompt: 'Filtrar categories'}, onchange: 'this.form.submit()')%>
+        <% end %>
+      </th>
     </tr>
   </thead>
   <tbody>
