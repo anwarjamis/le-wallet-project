@@ -1,15 +1,24 @@
 <div class='container'>
 <br>
-<h1>Movimientos <%= @bank.bank %></h1>
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Movimientos <%= @bank.bank %></h1>
+  <%= link_to "Borrar cuenta",
+              bank_account_path(@bank),
+              method: :delete,
+              class: "text-danger",
+              data: { confirm: "¿Estás seguro que quieres eliminar esta cuenta?" } %>
+</div>
 <br>
 
 <%= form_tag bank_account_movements_path, method: :get do %>
+<div class="d-flex justify-content-between align-items-center">
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Encuentra un movimiento"
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
+</div>
 <% end %>
 
 <br>

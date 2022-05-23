@@ -51,6 +51,7 @@ class BankAccountsController < ApplicationController
 
   def destroy
     @bank.destroy
+    redirect_to bank_accounts_path
   end
 
   private
