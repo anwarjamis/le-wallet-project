@@ -3,13 +3,16 @@
 <h1>Movimientos</h1>
 <br>
 
+
 <%= form_tag movements_path, method: :get do %>
+  <div class="d-flex justify-content-between align-items-center">
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Encuentra un movimiento"
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
+  </div>
 <% end %>
 
 <table class="table table-striped">
@@ -26,7 +29,7 @@
           <% bank.bank %>
         <% end %>
         <%= form_with(url: movements_path, method: :get, local: true) do |f| %>
-          <%= f.select(:bank, bank_array.push('Todos'), {prompt: 'Filtrar banco'}, onchange: 'this.form.submit()')%>
+          <%= f.select(:bank, bank_array.push('Todos'), {prompt: 'Filtrar por banco'}, onchange: 'this.form.submit()')%>
         <% end %>
         </th>
       <th scope="col">Fecha</th>
@@ -37,7 +40,7 @@
           <% category.name %>
         <% end %>
         <%= form_with(url: movements_path, method: :get, local: true) do |f| %>
-          <%= f.select(:category, category_array.push('Todas'), {prompt: 'Filtrar categories'}, onchange: 'this.form.submit()')%>
+          <%= f.select(:category, category_array.push('Todas'), {prompt: 'Filtrar por categorías'}, onchange: 'this.form.submit()')%>
         <% end %>
       </th>
     </tr>
