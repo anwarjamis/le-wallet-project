@@ -5,8 +5,11 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                   <%= cl_image_tag current_user.photo.key, alt:"Admin", class:"rounded-circle", width:"120"%>
-                    <!--<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">-->
+                  <% if current_user.photo.attached? %>
+                    <%= cl_image_tag current_user.photo.key, alt:"Admin", class:"rounded-circle", width:"120"%>
+                  <% else %>
+                    <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <% end %>
                     <div class="mt-3">
                       <h4><%= current_user.name %></h4>
                       <p class="text-secondary mb-1"><%= current_user.email %></p>

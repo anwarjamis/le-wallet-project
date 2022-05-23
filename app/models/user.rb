@@ -7,10 +7,8 @@ class User < ApplicationRecord
   has_many :user_categories
   has_many :categories, through: :user_categories
   has_many :movements
-
-
+  has_one_attached :photo
 
   validates :name, :rut, presence: true
   validates :rut, uniqueness: true
-  has_one_attached :photo
 end
