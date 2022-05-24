@@ -29,7 +29,12 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">
+      <% quantity= [10, 20, 30] %>
+      <%= form_with(url: bank_account_movements_path, method: :get, local: true, remote: true) do |f| %>
+        <%= f.select(:quantity, quantity.push('Todos'), {prompt: '#'}, onchange: 'this.form.submit()', class: 'form-select form-select-sm')%>
+      <% end %>
+      </th>
       <th scope="col">Fecha</th>
       <th scope="col">Monto</th>
       <th scope="col">Descripcion</th>
