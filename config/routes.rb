@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :categories, except: %i[show]
   resources :movements, only: %i[index]
   get "instructions", to: "pages#instructions"
+  get "statistics", to: "movements#statistics"
 end

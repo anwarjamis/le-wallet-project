@@ -43,4 +43,10 @@ class MovementsController < ApplicationController
       @movements = @movements.limit(params[:quantity])
     end
   end
+
+  def statistics
+    @banks = BankAccount.where(user_id: current_user.id)
+    @movements = Movement.where(user_id: current_user.id)
+
+  end
 end

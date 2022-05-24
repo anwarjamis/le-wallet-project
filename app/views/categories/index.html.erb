@@ -16,8 +16,28 @@
           <ul><%= link_to "Editar categoría", edit_category_path(category), class: "nav-link btn-ctgy btn-edit" %></ul>
         <% end %>
         <br>
-        <%= link_to "Crear nueva categoría", new_category_path, class: "nav-link btn-ctgy" %>
+        <%= link_to "Crear nueva categoría", new_category_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#exampleModal', class: "nav-link btn-ctgy"} %>
         <%= link_to "Volver", :back, class: "btn btn-gradient" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crea una nueva categoría</h5>
+        <button type="button" class="close btn-cierre" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Nueva categoría</h4>
+        <%= simple_form_for(@category) do |f| %>
+          <%= f.input :name, :label => 'Nombre' %>
+          <%= f.button :submit, "Crear categoría", class: 'btn-submit' %>
+        <% end %>
       </div>
     </div>
   </div>
