@@ -1,20 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-8">
       <div class="form-devise">
         <br>
         <h2>Categorías</h2>
-        <% @categories.each do |category| %>
-          <div class="d-flex justify-content-between align-items-start">
-            <ul><h4><%= category.name %></h4></ul>
-            <%= link_to "Borrar categoría",
-                  category_path(category),
-                  method: :delete,
-                  class: "text-danger",
-                  data: { confirm: "¿Estás seguro de que quieres eliminar esta categoría?" } %>
-          </div>
-          <ul><%= link_to "Editar categoría", edit_category_path(category), class: "nav-link btn-ctgy btn-edit" %></ul>
-        <% end %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Categoría</th>
+              <th scope="col" class="text-end">Editar/Borrar</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @categories.each_with_index do |category, index| %>
+            <tr>
+              <td scope="row"><%= index + 1 %></td>
+              <td><%= category.name %></td>
+              <td class="text-end"><%= link_to "", edit_category_path(category), { class: "fa fa-edit" } %>
+              <%= link_to "",
+                      category_path(category),
+                      method: :delete,
+                      class: "fa fa-trash ms-3 text-danger",
+                      data: { confirm: "¿Quieres eliminar esta categoría?" } %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
         <br>
         <%= link_to "Crear nueva categoría", new_category_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#exampleModal', class: "nav-link btn-ctgy"} %>
         <%= link_to "Volver", :back, class: "btn btn-gradient" %>
@@ -33,10 +45,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <h4>Nueva categoría</h4>
+        <h3>Crear nueva categoría</h3>
         <%= simple_form_for(@category) do |f| %>
           <%= f.input :name, :label => 'Nombre' %>
-          <%= f.button :submit, "Crear categoría", class: 'btn-submit' %>
+          <%= f.button :submit, 'Crear', class: 'btn-submit' %>
         <% end %>
       </div>
     </div>
