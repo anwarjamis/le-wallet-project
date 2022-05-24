@@ -3,13 +3,11 @@ import { getFintoc } from '@fintoc/fintoc-js';
 const main = async () => {
   const Fintoc = await getFintoc();
   const widget = Fintoc.create({
-    holderType = 'individual',
-    product = 'movements',
-    publicKey = 'pk_test_Qo6z9u6FRnUBMW4xygFXKunztvCpyxbU',
+    holderType: 'individual',
+    product: 'movements',
+    publicKey: 'pk_test_Qo6z9u6FRnUBMW4xygFXKunztvCpyxbU',
     webhookUrl,
-    country = 'cl',
-    institutionId,
-    username,
+    country: 'cl',
     onSuccess,
     onExit,
     onEvent,
