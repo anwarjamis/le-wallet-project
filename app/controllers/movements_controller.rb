@@ -39,5 +39,8 @@ class MovementsController < ApplicationController
     if params[:query].present?
       @movements = Movement.where(user_id: current_user.id).search_by_description(params[:query])
     end
+    if params[:quantity].present? && params[:quantity] != 'Todos'
+      @movements = @movements.limit(params[:quantity])
+    end
   end
 end
