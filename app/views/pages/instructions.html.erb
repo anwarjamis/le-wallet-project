@@ -1,0 +1,37 @@
+<br>
+<div class="container">
+  <h1>Cómo crear links a mi banco y API keys usando Fintoc</h1>
+    <p>Guía práctica para crear links y API keys para ver los balances de tu banco en Le Wallet.</p>
+  <br>
+  <h3>1. Dirígete al <%= link_to 'Dashboard de Fintoc', "https://dashboard.fintoc.com/login", target: "_blank" %> e inicia sesión.</h3>
+    <p>Puedes iniciar sesión usando tu email, Google o GitHub.</p>
+    <%= image_tag "dashboard.png", style: 'width: 75%;', class: "rounded mx-auto d-block" %>
+  <br>
+  <h3>2. Haz click sobre Create Live Link.</h3>
+    <p>En la parte superior derecha de la tabla, vas a encontrar el botón <strong>'Create Live Link'</strong> </p>
+    <%= image_tag "livelink.png", style: 'width: 75%;', class: "rounded mx-auto d-block" %>
+  <br>
+  <h3>3. Selecciona los datos de tu cuenta.</h3>
+    <p>En el país debes seleccionar Chile. Luego, el tipo de llamadas a la API, esta siempre debe ser <strong>banking</strong>. Finalmente, debes seleccionar el tipo de cuenta (individual en caso de ser una cuenta personal, business en caso de ser una cuenta de empresa).</p>
+    <%= image_tag "create.png", style: 'width: 75%;', class: "rounded mx-auto d-block" %> <br>
+    <p>Una vez seleccionado 'Create Live Link', debes presionar en Continuar, seleccionar tu banco e ingresar tus credenciales del banco. Fintoc hará todo el resto ;).</p>
+    <ul class="list-inline">
+      <%= image_tag "first.png", style: 'width: 48%;', class: "list-inline-item" %>
+      <%= image_tag "second.png", style: 'width: 48%;', class: "list-inline-item" %>
+      <%= image_tag "third.png", style: 'width: 48%; margin-top: 10px;', class: "list-inline-item" %>
+      <%= image_tag "last.png", style: 'width: 48%; margin-top: 10px;', class: "list-inline-item" %>
+    </ul>
+  <h3>4. Copiar el link de tu cuenta.</h3>
+    <p>Una vez que Fintoc se conectó a tu banco te va a entregar un link. <strong>Debes copiarlo y no perderlo, ya que te lo entrega solo una vez y lo vamos a necesitar para agregarlo a tu wallet.</strong></p>
+    <%= image_tag "link.png", style: 'width: 75%;', class: "rounded mx-auto d-block" %>
+    <br>
+  <h3>5. Copia las API keys.</h3>
+    <p>Luego de copiar el link, solo faltan las API keys. Estas son una por usuario (son las mismas para cada link de banco).</p>
+    <%= image_tag "keys.png", style: 'width: 75%;', class: "rounded mx-auto d-block" %>
+    <br>
+  <h3>6. Pega los valores en Le Wallet.</h3>
+    <p>Ya copiadas las API keys y el link de tu cuenta bancaria, solo debes pegar estos valores en nuestra app para ver tus balances y últimos movimientos. Una vez agregado el banco, podrás agregar uno nuevo siguiendo estos mismo pasos o crear categorías para estadísticas avanzadas.</p>
+    <%= image_tag "final_step.png", style: 'width: 75%;', class: "rounded mx-auto d-block" %>
+    <br>
+</div>
+<br><br>
