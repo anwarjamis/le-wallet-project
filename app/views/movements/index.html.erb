@@ -55,6 +55,8 @@
     <td><%= number_to_currency(movement['amount'], :precision => 0, :delimiter =>'.') %></td>
     <td><%= movement['description'] %></td>
     <td><%= Category.where(id: movement.category_id).first.name %></td>
+    <% categories = UserCategory.where(user_id: current_user) %>
+    <td><%= simple_form_for(movement), collection: categories, select: categories %></td>
   </tr>
   <% end %>
   </tbody>
