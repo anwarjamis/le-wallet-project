@@ -36,14 +36,7 @@
       <th scope="col">Fecha</th>
       <th scope="col">Monto</th>
       <th scope="col">Descripción</th>
-      <th scope="col">
-        <% category_array = @categories.map do |category| %>
-          <% category.name %>
-        <% end %>
-        <%= form_with(url: movements_path, method: :get, local: true) do |f| %>
-          <%= f.select(:category, category_array.push('Todas'), {prompt: 'Filtrar por categorías'}, onchange: 'this.form.submit()', class: 'form-select form-select-sm')%>
-        <% end %>
-      </th>
+      <th scope="col">Categorías</th>
     </tr>
   </thead>
   <tbody>
