@@ -17,7 +17,7 @@
             <tr>
               <td scope="row"><%= index + 1 %></td>
               <td><%= category.name %></td>
-              <td class="text-end"><%= link_to "", edit_category_path(category), { class: "fa fa-edit" } %>
+              <td class="text-end"><%= link_to "", edit_category_path(category), remote: true, class: "fa fa-edit" %>
               <%= link_to "",
                       category_path(category),
                       method: :delete,
@@ -35,22 +35,22 @@
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal new -->
+
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Crea una nueva categoría</h5>
-        <button type="button" class="close btn-cierre" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h3>Crear nueva categoría</h3>
-        <%= simple_form_for(@category) do |f| %>
-          <%= f.input :name, :label => 'Nombre' %>
-          <%= f.button :submit, 'Crear', class: 'btn-submit' %>
-        <% end %>
-      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal edit -->
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
     </div>
   </div>
 </div>
