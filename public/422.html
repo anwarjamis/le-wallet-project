@@ -1,67 +1,309 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The change you wanted was rejected (422)</title>
+  <title>No se pudo realizar la operación (422)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url('https://fonts.googleapis.com/css?family=Overpass+Mono');
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+:root {
+  --purple: #892a92;
+  --purple2: #70217a;
+  --white: #f6d3fd;
+  --height: 222px;
+  --width: 350px;
+  --font: "Overpass Mono", monospaced;
+  --masterFont: "Raleway", sans-serif;
+}
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+body {
+  --baseColor: #c2e59c;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: var(--baseColor);
+  background: linear-gradient(to right, #64b3f4, var(--baseColor));
+}
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+.card {
+  --heightCalc: - calc((var(--height) / 2) - 10px);
+  --widthCalc: calc(var(--width) / 2);
+  height: var(--height);
+  width: var(--width);
+  min-width: var(--width);
+  background: linear-gradient(90deg, var(--purple), var(--purple2));
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 10px auto;
+  position: relative;
+  filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.6));
+  transform: translateY(calc(50% - 10px));
+}
+
+.card__figure {
+  position: relative;
+  height: 40px;
+  margin: 0;
+}
+
+.card__figure::after {
+  content: "PLATINUM";
+  font-size: 0.45em;
+  letter-spacing: 4px;
+  color: var(--white);
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: calc(-100% - 15px);
+}
+
+.card__figure--logo {
+  margin-right: 11px;
+  margin-top: -57px;
+  --widthLogo: 130px;
+  width: var(--widthLogo);
+  position: absolute;
+  right: 50%;
+  transform: translate(calc(var(--widthLogo) / 2), 20px);
+}
+
+.card__reader {
+  width: 50px;
+  height: 40px;
+  background: radial-gradient(#d9a56c, #b18457);
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translate(33px, -40px);
+  overflow: hidden;
+}
+
+.card__reader--risk {
+  width: 50px;
+  height: 40px;
+  border-radius: 13px;
+  background: transparent;
+  border: 1px solid #666;
+  position: absolute;
+  z-index: 0;
+}
+
+.card__reader--risk-one {
+  transform: translate(37px, 15px);
+}
+
+.card__reader--risk-two {
+  transform: translate(15px, 30px);
+}
+
+.card__reader--risk-three {
+  transform: translate(-37px, -15px);
+}
+
+.card__reader--risk-four {
+  transform: translate(-15px, -30px);
+}
+
+.card__number {
+  font-family: var(--font);
+  font-size: 1.15em;
+  font-weight: normal;
+  color: var(--white);
+  letter-spacing: 2.5px;
+  text-align: center;
+  margin-left: -20px;
+  margin-top: 80px;
+  z-index: 1;
+  position: relative;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.card__number2 {
+  font-family: var(--font);
+  font-size: 1.15em;
+  font-weight: normal;
+  color: var(--white);
+  letter-spacing: 2.5px;
+  text-align: center;
+  margin-left: 3px;
+  margin-top: 120px;
+  z-index: 1;
+  position: relative;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.card__number::before,
+.card__number::after {
+  font-family: Arial;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.4em;
+  position: absolute;
+  letter-spacing: 0px;
+}
+
+.card__number::before {
+  content: "5032";
+  transform: translate(15px, 22px);
+}
+
+.card__number::after {
+  content: "Valid thru";
+  width: 80px;
+  transform: translate(-215px, 22px);
+}
+
+.card__dates {
+  position: absolute;
+  width: 40%;
+  font-size: .9em;
+  display: flex;
+  justify-content: space-between;
+  color: var(--white);
+  font-family: var(--font);
+  bottom: 22%;
+  transform: translate(60px, 0px);
+}
+
+.card__dates span {
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.card__name {
+  font-family: var(--font);
+  font-size: .9em;
+  font-weight: normal;
+  color: var(--white);
+  letter-spacing: 2.5px;
+  transform: translate(35px, 25px);
+  position: relative;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.card__flag {
+  right: 30px;
+  top: 45%;
+  border-radius: 25px;
+  transform: translate(0, -28px);
+  position: absolute;
+  height: 110px;
+  width: 80px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.card__flag--globe {
+  --margin: 5px;
+  width: calc(100% - (var(--margin) * 2));
+  background-color: #b7b2b8;
+  height: 50%;
+  border-radius: 20px;
+  margin: var(--margin);
+  background: repeating-linear-gradient(
+    0deg,
+    #dbd1dc,
+    #dbd1dc 5px,
+    #b2aab5 7px,
+    #b2aab5 5px
+  );
+}
+
+.card__flag--globe::after,
+.card__flag--globe::before {
+  content: "\f0ac";
+  font-family: FontAwesome;
+  color: rgba(0, 0, 0, 0.2);
+  font-size: 3em;
+  top: 6px;
+  left: 2px;
+  position: absolute;
+}
+
+.card__flag--globe::after {
+  transform: translateX(10px);
+}
+
+.card__flag--globe::before {
+  transform: translateX(25px);
+}
+
+.card__flag--red {
+  position: absolute;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ce0e1d;
+}
+
+.card__flag--yellow {
+  position: absolute;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e39833;
+}
+
+.card__flag--yellow::after {
+  content: "MasterCard";
+  position: absolute;
+  font-size: 0.7em;
+  top: 50%;
+  transform: translate(-25px, -7px);
+  font-family: var(--masterFont);
+  font-style: italic;
+  font-weight: 800;
+  color: var(--white);
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+}
+
+.assign {
+  text-align: center;
+  margin-top: 113px;
+  font-family: var(--masterFont);
+  color: #fff;
+  font-size: 0.8em;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.assign a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #FFF;
+}
+
+.assign a::hover {
+  color: var(--purple);
+}
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+<body class="error-422">
+  <!-- This file lives in public/500.html -->
+  <div class="card">
+    <figure class="card__figure">
+      <img src="images/lewalletlogo.png" class="card__figure--logo"></img>
+    </figure>
+  <div class="card__reader">
+    <div class="card__reader--risk card__reader--risk-one"></div>
+    <div class="card__reader--risk card__reader--risk-two"></div>
+     <div class="card__reader--risk card__reader--risk-three"></div>
+    <div class="card__reader--risk card__reader--risk-four"></div>
   </div>
-</body>
-</html>
+  <p class="card__number">Ups!</p>
+  <div class="card__dates">
+    <span class="card__dates--first">ERROR</span>
+    <span class="card__dates--second">422</span>
+  </div>
+  <p class="card__name">No se pudieron realizar cambios solicitados<p>
+  <div class="card__flag">
+    <div class="card__flag--globe"></div>
+    <div class="card__flag--red"></div>
+     <div class="card__flag--yellow"></div>
+  </div>
+  </div>
+  <div class="card__number2"><a href="http://www.lewallet.digital/">Volver al inicio</a></div>
+  </body>
+  </html>
