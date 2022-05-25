@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :rut, :photo])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :rut, :photo])
   end
+
+  def default_url_options
+    { host: ENV["http://www.lewallet.digital/"] || "localhost:3000" }
+  end
 end
