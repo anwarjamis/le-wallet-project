@@ -8,8 +8,10 @@
       <div class="card-body">
 
         <%= line_chart @banks.map { |bank|
-          {name: bank.bank, data: Movement.where(user_id: current_user.id, bank_account_id: bank.id).group_by_day(:post_date).count}
-        } %>
+          movements = Movement.where(user_id: current_user.id, bank_account_id: bank.id)
+            {name: bank.bank, data: movements.group_by_day(:post_date).sum(:amount)}
+          }, thousands: ".", prefix: "$", min: -30000000, max: 30000000%>
+          <br>
         <a href="<%= movements_path %>" class="btn btn-primary btn-sm">Ver detalles</a>
       </div>
     </div>
@@ -20,8 +22,9 @@
           <%= bank.bank %>
         </div>
         <div class="card-body">
-
-          <%= line_chart Movement.where(user_id: current_user.id, bank_account_id: bank.id).group_by_day(:post_date).count %>
+          <% movements =  Movement.where(user_id: current_user.id, bank_account_id: bank.id)%>
+          <%= line_chart movements.group_by_day(:post_date).sum(:amount), thousands: ".", prefix: "$", min: -30000000, max: 30000000 %>
+          <br>
           <a href="<%= bank_account_movements_path(bank) %>" class="btn btn-primary btn-sm">Ver detalles</a>
         </div>
       </div>
