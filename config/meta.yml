@@ -2,3 +2,4 @@ meta_product_name: "Le Wallet"
 meta_title: "Le Wallet - Tus finanzas simplificadas"
 meta_description: "La unica app que consolida tus cuentas bancarias en una sola plataforma"
 meta_image: "foto_facebook.png" # should exist in `app/assets/images/`
+twitter_account: "@elonmusk"   # required for Twitter Cards
