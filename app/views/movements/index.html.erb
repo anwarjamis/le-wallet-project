@@ -47,8 +47,8 @@
     <td><%= movement['post_date'] %></td>
     <td><%= number_to_currency(movement['amount'], :precision => 0, :delimiter =>'.') %></td>
     <td><%= movement['description'] %></td>
-    <% user_categories = UserCategory.where(user_id: current_user).map do |category| %>
-      <% Category.find(category.id).name %>
+    <% user_categories = current_user.categories.map do |category| %>
+      <% category.name %>
     <% end %>
     <td><%= simple_form_for Movement.new do |f| %>
           <%= f.input :category_id, collection: user_categories, label: false, selected: movement.category_id %>
