@@ -1,7 +1,32 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+movements = Movement.all
+movements.each do |movement|
+  if movement.description.include?("est") || movement.description.include?("Est")
+    movement.description = "Uber"
+    movement.save
+  end
+
+  if movement.description.include?("et") || movement.description.include?("Et")
+    movement.description = "Supermercados Patito"
+    movement.save
+  end
+
+  if movement.description.include?("qui") || movement.description.include?("Qui")
+    movement.description = "Transferencia: Anwar Jamis"
+    movement.save
+  end
+
+  if movement.description.include?("aut") || movement.description.include?("Aut")
+    movement.description = "Farmacias Iben"
+    movement.save
+  end
+
+  if movement.description.include?("voluptas") || movement.description.include?("Voluptas")
+    movement.description = "Falabella Retail"
+    movement.save
+  end
+
+  if movement.description.include?("eos") || movement.description.include?("Eos")
+    movement.description = "Entradas CD Palestino"
+    movement.save
+  end
+end
